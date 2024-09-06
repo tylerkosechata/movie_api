@@ -5,5 +5,15 @@
   },
   "devDependencies": {
     "eslint": "^9.9.1"
-  }
+  },
+  "name": "movie_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
