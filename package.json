@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1"
+  }
+}
