@@ -15,11 +15,11 @@ app.use(express.static('public'));
 
 let movies = [
     { 
-        "Title": 'Shawshank redemption', 
-        "Year": '1994',
+        "Title": 'Top Gun', 
+        "Year": '1986',
 
       "Director": {
-        "Name": 'Frank Darabont'},
+        "Name": 'Tony Scott'},
 
       "Genre": {
         "Name": 'Drama'},
@@ -51,13 +51,13 @@ let movies = [
 let users = [
     {
         "id": 1,
-        "name": 'Sandy Best',
-        "favoriteMovies": ['Shawshank Redemption']
+        "name": 'Jayden Smith',
+        "favoriteMovies": ['Jurassic Park']
     },
     {
         "id": 2,
-        "name": 'Ruby Kosechata',
-        "favoriteMovies": ['Jurrasic Park']
+        "name": 'Destiny Johnson',
+        "favoriteMovies": ['Top Gun']
     },
 ];
 
