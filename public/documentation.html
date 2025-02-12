@@ -1,130 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Movie API</title>
+    <title>API Documentation</title>
     <style>
-        table {
-            width: 100%;
-            margin: 20px;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
         }
-        table, th, td {
-            border: 1px;
-            padding: 8px;
-            text-align: left;
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
         }
     </style>
 </head>
-<body>
-    <h1>Documentation Page</h1>
-    <p>I am building the server-side of a "movies" web application</p>
 
-    <h2>API Endpoints</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Business Logic</th>
-                <th>URL</th>
-                <th>Description</th>
-                <th>HTTP Method</th>
-                <th>Query Parameters</th>
-                <th>Request body data format</th>
-                <th>Response body data format</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--Get all movies-->
-            <tr>
-                <td>Get All Movies</td>
-                <td>/movies</td>
-                <td>Returns a list of all movies</td>
-                <td>GET</td>
-                <td>None</td>
-                <td>None</td>
-                <td>JSON of movie array</td>
-            </tr>
-            <!--Get movie by title--->
-            <tr>
-                <td>Get Movies by Movie Title</td>
-                <td>/movies/:Title</td>
-                <td>Returns a movie by its specified title</td>
-                <td>GET</td>
-                <td>title (URL parameter)</td>
-                <td>None</td>
-                <td>JSON obejct with movie</td>
-            </tr>
-            <!--Get movie by genre-->
-            <tr>
-                <td>Get Movies by Genre</td>
-                <td>/movies/genre/:genreName</td>
-                <td>Returns a movie by its genre</td>
-                <td>GET</td>
-                <td>name (URL parameter)</td>
-                <td>None</td>
-                <td>JSON object with genre name</td>
-            </tr>
-            <!--Get movie by director name-->
-            <tr>
-                <td>Get Movies by Director's Name</td>
-                <td>/movies/directors/:directorsName</td>
-                <td>Returns movies by the directors name</td>
-                <td>GET</td>
-                <td>name (URL parameter)</td>
-                <td>None</td>
-                <td>JSON object about director and movie they directed</td>
-            </tr>
-            <!--Create a new user-->
-            <tr>
-                <td>Create a New User</td>
-                <td>/users</td>
-                <td>Allows a new user to create profile</td>
-                <td>POST</td>
-                <td>username (URL parameter)</td>
-                <td>None</td>
-                <td>JSON object with information</td>
-            </tr>
-            <!--Update user name-->
-            <tr>
-                <td>Update a User Name</td>
-                <td>/users/:Username</td>
-                <td>Allows a user to update name and other info</td>
-                <td>PUT</td>
-                <td>Username (URL parameter)</td>
-                <td>JSON object with updated user info</td>
-                <td>Confirmation message</td>
-            </tr>
-            <!--Add movie to favorites-->
-            <tr>
-                <td>Add a Favorite Movie</td>
-                <td>/users/:Username/movies/:MovieID</td>
-                <td>Allows a user to add a favorite movie</td>
-                <td>POST</td>
-                <td>username (URL parameter)</td>
-                <td>JSON object with movie title</td>
-                <td>Updated list of favorite movies</td>
-            </tr>
-            <!--Delete a user's favorite movie-->
-            <tr>
-                <td>Remove a Movie From Favorites</td>
-                <td>/users/:Username/movies/:MovieID</td>
-                <td>Allows a user to remove movies from the favorite list</td>
-                <td>DELETE</td>
-                <td>username, movieid</td>
-                <td>None</td>
-                <td>Updated list of favorite movies or confirmation message</td>
-            </tr>
-            <!--Deregister a user-->
-            <tr>
-                <td>Delete a User</td>
-                <td>/users/:Username</td>
-                <td>Allows a user to be deleted</td>
-                <td>DELETE</td>
-                <td>username (URL parameter)</td>
-                <td>None</td>
-                <td>Confirmation or error message</td>
-            </tr>
-        </tbody>
-    </table>
+<body>
+
+    <h1>API Documentation</h1>
+
+    <h2>Movies API Endpoints</h2>
+
+    <h3>1. Get All Movies</h3>
+    <p><strong>Endpoint:</strong> <code>/movies</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong> Returns a list of all movies in JSON format.</p>
+    <pre><code>[
+    {
+        "title": "Inception",
+        "release_year": 2010,
+        "genre": { "name": "Sci-Fi", "sub_genre": "Action" },
+        "director": { "first_name": "Christopher", "last_name": "Nolan", "bio": "Director and producer." },
+        "rating": 8.8,
+        "duration_minutes": 148,
+        "description": "A thief who steals corporate secrets through the use of dream-sharing technology."
+    },
+    ...
+]</code></pre>
+
+    <h3>2. Get Movie by Title</h3>
+    <p><strong>Endpoint:</strong> <code>/movies/:title</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong> Returns details about a specific movie.</p>
+    <pre><code>{
+    "title": "Inception",
+    "release_year": 2010,
+    "genre": { "name": "Sci-Fi", "sub_genre": "Action" },
+    "director": { "first_name": "Christopher", "last_name": "Nolan", "bio": "Director and producer." },
+    "rating": 8.8,
+    "duration_minutes": 148,
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology."
+}</code></pre>
+
+    <h3>3. Get Genre by Name</h3>
+    <p><strong>Endpoint:</strong> <code>/genres/:name</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong> Returns the genre information.</p>
+    <pre><code>{
+    "name": "Sci-Fi",
+    "sub_genre": "Action"
+}</code></pre>
+
+    <h3>4. Get Director by Name</h3>
+    <p><strong>Endpoint:</strong> <code>/directors/:name</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Response:</strong> Returns the director's information.</p>
+    <pre><code>{
+    "first_name": "Christopher",
+    "last_name": "Nolan",
+    "bio": "Director and producer.",
+    "birth_year": 1970,
+    "death_year": null
+}</code></pre>
+
+    <h2>Users API Endpoints</h2>
+
+    <h3>5. Register New User</h3>
+    <p><strong>Endpoint:</strong> <code>/users</code></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Request Body:</strong> JSON object with user details.</p>
+    <pre><code>{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "90210"
+    },
+    "favorite_movies": []
+}</code></pre>
+    <p><strong>Response:</strong> Returns the created user object.</p>
+    <pre><code>{
+    "_id": "60c72b2f9b1e8c001c8d5b5e",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "age": 30,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "90210"
+    },
+    "favorite_movies": [],
+    "__v": 0
+}</code></pre>
+
+    <h3>6. Update User Info</h3>
+    <p><strong>Endpoint:</strong> <code>/users/:email</code></p>
+    <p><strong>Method:</strong> PUT</p>
+    <p><strong>Request Body:</strong> JSON object with updated user details.</p>
+    <pre><code>{
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "password": "newpassword123",
+    "age": 31
+}</code></pre>
+    <p><strong>Response:</strong> Returns the updated user object.</p>
+    <pre><code>{
+    "_id": "60c72b2f9b1e8c001c8d5b5e",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "age": 31,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "90210"
+    },
+    "favorite_movies": [],
+    "__v": 0
+}</code></pre>
+
+    <h3>7. Add Movie to Favorites</h3>
+    <p><strong>Endpoint:</strong> <code>/users/:email/movies/:movieTitle</code></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Response:</strong> Returns the updated user object with the favorite movie added.</p>
+    <pre><code>{
+    "_id": "60c72b2f9b1e8c001c8d5b5e",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "age": 31,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "90210"
+    },
+    "favorite_movies": ["Inception"],
+    "__v": 0
+}</code></pre>
+
+    <h3>8. Remove Movie from Favorites</h3>
+    <p><strong>Endpoint:</strong> <code>/users/:email/movies/:movieTitle</code></p>
+    <p><strong>Method:</strong> DELETE</p>
+    <p><strong>Response:</strong> Returns the updated user object with the favorite movie removed.</p>
+    <pre><code>{
+    "_id": "60c72b2f9b1e8c001c8d5b5e",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "age": 31,
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "90210"
+    },
+    "favorite_movies": [],
+    "__v": 0
+}</code></pre>
+
+    <h3>9. Deregister User</h3>
+    <p><strong>Endpoint:</strong> <code>/users/:email</code></p>
+    <p><strong>Method:</strong> DELETE</p>
+    <p><strong>Response:</strong> Returns a success message upon successful deletion.</p>
+    <pre><code>{
+    "message": "User deleted successfully"
+}</code></pre>
+
 </body>
+
 </html>
